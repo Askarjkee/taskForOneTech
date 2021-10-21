@@ -11,10 +11,10 @@ export const PasswordForm = () => {
     const confirmPassword = useInput('');
 
     const onSubmit = () => {
-        if (password.value === confirmPassword.value) {
+        if (password.value === confirmPassword.value && password.value !== "qwerty" && password.value !== 123) {
             console.log(password.value, confirmPassword.value)
         } else {
-            setConfirmPasswordError("Пароли не совпадают")
+            setConfirmPasswordError("Пароли не совпадают или не соответствуют требованием безопасности")
         }
     }
 
