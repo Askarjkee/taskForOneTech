@@ -1,7 +1,7 @@
 import React from 'react';
 import { PasswordForm } from './PasswordForm';
 import styled from "styled-components";
-import backIcon from '../assets/img/back.png';
+import backIcon from '../../assets/img/password/back.png';
 
 export const Password = () => {
 

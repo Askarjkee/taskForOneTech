@@ -1,7 +1,7 @@
 import { Input, Button } from '@mui/material';
 import styled from 'styled-components';
-import warning from '../assets/img/warning-4-64.png';
-import { useInput } from '../commons';
+import warning from '../../assets/img/password/warning-4-64.png';
+import { useInput } from '../../commons';
 import { useState } from 'react';
 
 export const PasswordForm = () => {
