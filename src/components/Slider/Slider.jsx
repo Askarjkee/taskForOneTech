@@ -1,7 +1,7 @@
 
 import 'swiper/swiper-bundle.min.css';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
-import { MySwiper } from './Styles.js';
+import { MySwiper, SliderWrapper } from './Styles.js';
 import { SliderItem } from './SliderItem';
 import { SwiperSlide } from "swiper/react";
 import backgroundImage from '../../assets/img/Slider/background1.jpg';
@@ -17,20 +17,22 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export const Slider = () => {
     return (
-        <MySwiper cssMode={true} loop={true} navigation={true} pagination={{ "clickable": true }}>
-            {
-                content.map(slide => {
-                    return (
-                        <SwiperSlide key={slide.id}>
-                            <SliderItem
-                                imgUrl={slide.imgUrl}
-                                subtitle={slide.subtitle}
-                                description={slide.description}
-                                btnInfo={slide.btnInfo} />
-                        </SwiperSlide>
-                    )
-                })
-            }
-        </MySwiper>
+        <SliderWrapper>
+            <MySwiper cssMode={true} loop={true} navigation={true} pagination={{ "clickable": true }}>
+                {
+                    content.map(slide => {
+                        return (
+                            <SwiperSlide key={slide.id}>
+                                <SliderItem
+                                    imgUrl={slide.imgUrl}
+                                    subtitle={slide.subtitle}
+                                    description={slide.description}
+                                    btnInfo={slide.btnInfo} />
+                            </SwiperSlide>
+                        )
+                    })
+                }
+            </MySwiper>
+        </SliderWrapper>
     )
 }

@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import { Swiper } from "swiper/react";
 import backgroundDefault from '../../assets/img/Slider/background2.jpg';
 
+export const SliderWrapper = styled.section`
+    margin-top: 88px;
+    height: 400px;
+`
 
 
 export const MySwiper = styled(Swiper)`
-    margin-top: 88px;
-    height: 400px;
+    
     .swiper-button-prev {
         width: 36px;
         height: 36px;
