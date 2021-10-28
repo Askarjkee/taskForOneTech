@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 import SwitchUnstyled, { switchUnstyledClasses } from '@mui/core/SwitchUnstyled';
 
 export const SectionWrapper = styled.section`
-    padding: 64px 0 100px 0;
+    padding: 64px 0 0 0;
 `
 
 export const Line = styled.span`

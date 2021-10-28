@@ -1,7 +1,7 @@
 import { MyCard, CardTitle, CardSubtitle, CardDescr, AnotherInfo, MyButton, FlexWrapper } from './styles';
-import classicCard from '../../assets/img/Cards/classic.png';
-import goldCard from '../../assets/img/Cards/gold.png';
-import platinumCard from '../../assets/img/Cards/platinum.png';
+import classicCard from '../../assets/img/cards/classic.png';
+import goldCard from '../../assets/img/cards/gold.png';
+import platinumCard from '../../assets/img/cards/platinum.png';
 
 export const CardItems = () => {
     return (

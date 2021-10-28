@@ -1,6 +1,6 @@
 import { Container } from '../../assets/globalStyles/styles.js';
-import { FirstSlide, Title, Subtitle, Descr, SliderBtn, SlideWrapper, Information, Picture } from './Styles.js';
-import sliderImg from '../../assets/img/Slider/girl.png';
+import { FirstSlide, Title, Subtitle, Descr, SliderBtn, SlideWrapper, Information, Picture } from './styles';
+import sliderImg from '../../assets/img/slider/girl.png';
 
 
 export const SliderItem = ({ imgUrl, subtitle, description, btnInfo }) => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Swiper } from "swiper/react";
-import backgroundDefault from '../../assets/img/Slider/background2.jpg';
+import backgroundDefault from '../../assets/img/slider/background2.jpg';
 
 export const SliderWrapper = styled.section`
     margin-top: 88px;

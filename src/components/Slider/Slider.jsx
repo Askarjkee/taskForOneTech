@@ -1,10 +1,10 @@
 
 import 'swiper/swiper-bundle.min.css';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
-import { MySwiper, SliderWrapper } from './Styles.js';
+import { MySwiper, SliderWrapper } from './styles.js';
 import { SliderItem } from './SliderItem';
 import { SwiperSlide } from "swiper/react";
-import backgroundImage from '../../assets/img/Slider/background1.jpg';
+import backgroundImage from '../../assets/img/slider/background1.jpg';
 
 const content = [
     { id: 1, imgUrl: backgroundImage, subtitle: 'До 3 000 000 ₸', description: 'Покупки без процентов', btnInfo: 'Подробнее' },
