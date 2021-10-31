@@ -2,7 +2,7 @@
 import { SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
 import SwiperCore, { Pagination } from 'swiper';
-import { Container } from '../../assets/globalStyles/styles';
+import { Container } from '../../styles/container';
 import { MySwiper, Title, CardWrapper } from './styles';
 import { CardItems } from '../Cards/CardItems';
 

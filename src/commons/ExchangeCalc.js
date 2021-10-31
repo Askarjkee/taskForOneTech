@@ -28,7 +28,7 @@ export const calculateResult = (from, to, current, inputValue) => {
     const fromObj = current[from];
     const toObj = current[to];
     const result = (fromObj * inputValue) / toObj;
-    return Math.ceil((result) * 100 ) / 100;
+    return Math.ceil((result) * 100) / 100;
 }
 
 

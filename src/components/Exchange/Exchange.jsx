@@ -1,4 +1,4 @@
-import { Container } from '../../assets/globalStyles/styles';
+import { Container } from '../../styles/container';
 import { ExchangeWrapper } from './styles';
 import { exchangeAPI } from '../../api/api';
 import { useState, useEffect } from 'react';

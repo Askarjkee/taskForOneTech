@@ -1,5 +1,5 @@
 
-import { Container } from '../../assets/globalStyles/styles';
+import { Container } from '../../styles/container';
 import { SectionWrapper, Title, Subtitle } from './styles';
 import { Calculator } from './Calculator';
 
