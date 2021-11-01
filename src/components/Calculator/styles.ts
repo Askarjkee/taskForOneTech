@@ -194,7 +194,6 @@ export const StyledSpan = styled.span`
     margin-left: 16px;
     font-weight: 400;
     font-size: 16px;
-    
     color: #303030;
 `
 

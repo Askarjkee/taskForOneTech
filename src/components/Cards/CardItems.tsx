@@ -12,7 +12,7 @@ export const CardItems = () => {
                 <CardSubtitle>Выпуск карты бесплатно</CardSubtitle>
                 <CardDescr>Снятие до 500 000 ₸ в месяц в банкоматах Казахстана бесплатно</CardDescr>
                 <AnotherInfo>CashBack до 15%</AnotherInfo>
-                <MyButton variant="contained">Заказать карту</MyButton>
+                <MyButton>Заказать карту</MyButton>
             </MyCard>
             <MyCard>
                 <img src={goldCard} alt="card" />
@@ -20,7 +20,7 @@ export const CardItems = () => {
                 <CardSubtitle>Выпуск карты бесплатно</CardSubtitle>
                 <CardDescr>Снятие до 500 000 ₸ в месяц в банкоматах Казахстана бесплатно</CardDescr>
                 <AnotherInfo>CashBack до 15%</AnotherInfo>
-                <MyButton variant="contained">Заказать карту</MyButton>
+                <MyButton>Заказать карту</MyButton>
             </MyCard>
             <MyCard>
                 <img src={platinumCard} alt="card" />
@@ -28,7 +28,7 @@ export const CardItems = () => {
                 <CardSubtitle>Выпуск карты бесплатно</CardSubtitle>
                 <CardDescr>Снятие до 500 000 ₸ в месяц в банкоматах Казахстана бесплатно</CardDescr>
                 <AnotherInfo>CashBack до 15%</AnotherInfo>
-                <MyButton variant="contained">Заказать карту</MyButton>
+                <MyButton>Заказать карту</MyButton>
             </MyCard>
         </FlexWrapper>
     )

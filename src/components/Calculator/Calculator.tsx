@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
+import { prettify } from '../../commons/prettify';
+import { initialState } from './mock';
 import {
     CalcWrapper,
     CalcTitle,
@@ -20,27 +22,24 @@ import {
 } from './styles';
 
 
+
 export const Calculator = () => {
-    const [sum, setSum] = useState(1000000);
-    const [time, setTime] = useState(24);
-    const [checked, setChecked] = useState(false);
-    const [result, setResult] = useState(100);
-    const [percent, setPercent] = useState(17);
+    const [sum, setSum] = useState(initialState.sum);
+    const [time, setTime] = useState(initialState.time);
+    const [checked, setChecked] = useState(initialState.checked);
+    const [result, setResult] = useState(initialState.result);
+    const [percent, setPercent] = useState(initialState.percent);
 
-    const prettify = (num) => {
-        const n = num.toString();
-        return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, `$1 `);
-    }
 
-    const handleSliderSumChange = (event, newValue) => {
-        setSum(newValue);
+    const handleSliderSumChange = (event: Event, newValue: number | number[]): void => {
+        setSum(+newValue);
     };
 
-    const handleSliderTimeChange = (event, newValue) => {
-        setTime(newValue)
+    const handleSliderTimeChange = (event: Event, newValue: number | number[]): void => {
+        setTime(+newValue)
     }
 
-    const handleSwitchChange = (event) => {
+    const handleSwitchChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setChecked(event.target.checked);
     };
 

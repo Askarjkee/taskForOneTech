@@ -4,7 +4,7 @@ import 'swiper/swiper-bundle.min.css';
 import SwiperCore, { Pagination } from 'swiper';
 import { Container } from '../../styles/container';
 import { MySwiper, Title, CardWrapper } from './styles';
-import { CardItems } from '../Cards/CardItems';
+import { CardItems } from './CardItems';
 
 SwiperCore.use([Pagination]);
 
