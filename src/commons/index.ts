@@ -1,2 +1,2 @@
-import { useInput } from "./Validation";
+import { useInput } from "./validation";
 export { useInput };

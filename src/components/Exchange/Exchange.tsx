@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
 import { Container } from '../../styles/container';
-import { getCurrentDate } from '../../commons/Date';
+import { getCurrentDate } from '../../commons/date';
 import { CurrenciesRate } from './CurrenciesRate';
-import { calculateToKzt, calculateResult } from '../../commons/ExchangeCalc';
+import { calculateToKzt, calculateResult } from '../../commons/exchangeCalc';
 import { exchangeAPI } from '../../api/api';
 import { Title, Subtitle, FlexContainer, ExchangeCalc, ExchangeCalcTitle, ExchangeCalcItems, Btn, BtnSubmit, ExchangeWrapper } from './styles';
 import { btns, content, initialValue } from './mock';
+import { inputEventType , calculateStringType, } from '../../commons/types';
 
 import refreshIcon from '../../assets/img/exchange/refresh.png';
 
@@ -30,19 +31,19 @@ export const Exchange = () => {
     }, [])
 
 
-    const onSubmit = (calculateFrom: string, calculateTo: string, inputValue: number): void => {
+    const onSubmit = (calculateFrom: calculateStringType, calculateTo: calculateStringType, inputValue: number): void => {
         setResult(calculateResult(calculateFrom, calculateTo, exchangeValueInKZT, inputValue))
     }
 
-    const handleChange = (event: any): void => {
-        setInputValue(event.target.value)
+    const handleChange = (event: inputEventType): void => {
+        setInputValue(+event.target.value)
     }
 
-    const handleClick = (value: string): void => {
+    const handleClick = (value: calculateStringType): void => {
         setCalculateFrom(value)
     }
 
-    const handleClickResult = (value: string): void => {
+    const handleClickResult = (value: calculateStringType): void => {
         setCalculateTo(value)
     }
 

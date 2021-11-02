@@ -1,15 +1,9 @@
+import { filterObjType, calculateStringType, notFilteredObjType } from './types';
 
-type FilterObjType = {
-    USD: number,
-    EUR: number,
-    GBP: number,
-    RUB: number,
-    KZT: number
-}
 
-export const FilterObj = (obj: any): FilterObjType => {
-    const { USD, EUR, GBP, RUB } = obj;
-    const KZT = USD;
+export const filterObj = (obj: notFilteredObjType ): filterObjType => {
+    const { USD, EUR, GBP, RUB, KZT } = obj;
+
     return {
         USD,
         EUR,
@@ -19,14 +13,14 @@ export const FilterObj = (obj: any): FilterObjType => {
     }
 }
 
-export const calculateToKzt = (obj: any): FilterObjType => {
-    let data = FilterObj(obj);
-    let result: FilterObjType | any = {}
-    for (let key in data) {
-        result[key] = Math.ceil(1 / obj[key]);
-    }
+export const calculateToKzt = (obj: notFilteredObjType): filterObjType => {
+    let data: filterObjType = filterObj(obj);
+
+    let calculatedData: filterObjType = Object.fromEntries(
+        Object.entries(data).map(([key, value]: any) => [key, Math.ceil(1 / value)])
+    );
     
-    return result;
+    return calculatedData;
 }
 
 export const addPercent = (value: number, percent: number = 2): number => {
@@ -34,10 +28,10 @@ export const addPercent = (value: number, percent: number = 2): number => {
     return value + res;
 }
 
-export const calculateResult = (from : string, to : string, current: any, inputValue: number): number => {
-    const fromObj = current[from];
-    const toObj = current[to];
-    const result = (fromObj * inputValue) / toObj;
+export const calculateResult = (from : calculateStringType, to : calculateStringType, current: filterObjType, inputValue: number): number => {
+    const valueFrom = current[from];
+    const valueTo = current[to];
+    const result = (valueFrom * inputValue) / valueTo;
     return Math.ceil(result);
 }
 

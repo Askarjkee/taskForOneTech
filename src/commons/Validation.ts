@@ -1,28 +1,17 @@
 import { useState, useEffect } from "react"
+import { inputEventType, blurEventType, useInputType, useValidationType} from "./types";
 
-type inputEvent = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>;
-type blurEvent = React.FocusEvent<HTMLTextAreaElement | HTMLInputElement, Element>;
-type UseInput = {
-    value: string,
-    onChange: (e: inputEvent) => void,
-    onBlur: (e: blurEvent) => void,
-    isDirty: boolean,
-    isError: boolean
-}
-type UseValidation = {
-    isError: boolean
-}
 
-export const useInput = (initialValue: string): UseInput => {
+export const useInput = (initialValue: string): useInputType => {
     const [value, setValue] = useState(initialValue);
     const [isDirty, setIsDirty] = useState(false);
     const { isError } = useValidation(value);
 
-    const onChange = (e: inputEvent): void => {
+    const onChange = (e: inputEventType): void => {
         setValue(e.target.value)
     }
 
-    const onBlur = (e: blurEvent): void => {
+    const onBlur = (e: blurEventType): void => {
         setIsDirty(true)
     }
 
@@ -35,7 +24,7 @@ export const useInput = (initialValue: string): UseInput => {
     }
 }
 
-const useValidation = (value: string): UseValidation => {
+const useValidation = (value: string): useValidationType => {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {

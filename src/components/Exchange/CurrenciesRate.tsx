@@ -1,4 +1,4 @@
-import { addPercent } from '../../commons/ExchangeCalc';
+import { addPercent } from '../../commons/exchangeCalc';
 import {
     UsdSvg,
     GbpSvg,
@@ -11,15 +11,10 @@ import {
     TableItemBuy,
     TableItemSell
 } from './styles';
+import { filterObjType } from '../../commons/types';
 
 type PropTypes = {
-    exchangeValueInKZT: {
-        EUR: number;
-        GBP: number;
-        KZT: number;
-        RUB: number;
-        USD: number;
-    }
+    exchangeValueInKZT: filterObjType
 }
 
 
