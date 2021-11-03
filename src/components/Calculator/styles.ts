@@ -4,24 +4,46 @@ import SwitchUnstyled, { switchUnstyledClasses } from '@mui/core/SwitchUnstyled'
 
 export const SectionWrapper = styled.section`
     padding: 64px 0 0 0;
+    @media(max-width: 575px) {
+        padding-top: 40px;
+    }
 `
 
 export const Line = styled.span`
     border: 1px solid #E0E0E0;
     width: 2px;
     height: 296px;
+    @media(max-width: 575px) {
+        display: none;
+    }
+`
+
+export const MobileLine = styled(Line)`
+    width: 100%;
+    height: 2px;
+    display: none;
+    @media(max-width: 575px) {
+        display: inline-block;
+        
+    }
 `
 
 export const FlexContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 631px;
+    @media(max-width: 575px) {
+        width: 250px;
+    }
 `
 
 export const Title = styled.div`
     font-weight: 500;
     font-size: 30px;
     color: #1E2A41;
+    @media(max-width: 575px) {
+        font-size: 24px;
+    }
 `
 
 export const Subtitle = styled.div`
@@ -29,6 +51,10 @@ export const Subtitle = styled.div`
     font-weight: 400;
     font-size: 16px;
     color: #303030;
+    @media(max-width: 575px) {
+        margin-top: 16px;
+        font-size: 15px;
+    }
 `
 
 export const CalcWrapper = styled.div`
@@ -38,12 +64,20 @@ export const CalcWrapper = styled.div`
     padding: 32px 0 0 32px;
     min-height: 344px;
     display: flex;
+    @media(max-width: 575px) {
+        min-height: 0;
+        flex-direction: column;
+        padding: 24px 24px 24px 24px;
+    }
 `
 
 export const CalcTitle = styled.div`
     font-weight: 400;
     font-size: 16px;
     color: #303030;
+    @media(max-width: 575px) {
+        font-size: 14px;
+    }
 `
 
 export const CalcInput = styled(Slider)`
@@ -53,6 +87,11 @@ export const CalcInput = styled(Slider)`
         width: 631px;
         height: 4px;
         color: #FFFFFF;
+        @media(max-width: 575px) {
+            width: 250px;
+            padding: 5px 0;
+            margin-top: 16px;
+        }
         .MuiSlider-track {
             color: #1E2A41;
         }
@@ -63,6 +102,9 @@ export const CalcInput = styled(Slider)`
             color: #9D2550;
             padding: 5px;
             border: 12px solid #fff;
+            @media(max-width: 575px) {
+                border: 8px solid #fff;
+            }
         }
         .Mui-active {
             box-shadow: none;
@@ -75,6 +117,18 @@ export const CalcValue = styled.span`
     font-weight: 400;
     font-size: 24px;
     color: #303030;
+    @media(max-width: 575px) {
+        position: absolute;
+        font-size: 16px;
+        top: -2px;
+        right: 0;
+    }
+`
+
+export const TimeValue = styled(CalcValue)`
+    @media(max-width: 575px) {
+        top: 96px;
+    }
 `
 
 export const CalcAllowedValue = styled.div`
@@ -95,6 +149,9 @@ export const CalcSwitch = styled(SwitchUnstyled)`
         height: 20px;
         margin: 0;
         cursor: pointer;
+        @media(max-width: 575px) {
+            width: 47px;
+        }
 
     &.${switchUnstyledClasses.disabled} {
         opacity: 0.4;
@@ -154,15 +211,27 @@ export const CalcSwitch = styled(SwitchUnstyled)`
 
 export const LeftCalcBlock = styled.div`
     width: 826px;
+    @media(max-width: 575px) {
+        width: 100%;
+        position: relative;
+    }
 `
 
 export const RightCalcBlock = styled.div`
     padding-left: 32px;
+    @media(max-width: 575px) {
+        padding-left: 0;
+    }
 `
 
 export const CalcSubtitle = styled(CalcTitle)`
     margin-top: 28px;
     font-size: 14px;
+    @media(max-width: 575px) {
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 15px;
+    }
 `
 
 export const CalcResult = styled.div`
@@ -170,6 +239,10 @@ export const CalcResult = styled.div`
     font-weight: 500;
     font-size: 30px;
     color: #9D2550;
+    @media(max-width: 575px) {
+        display: inline-block;
+        font-size: 18px;
+    }
 `
 
 export const CalcPercent = styled(CalcResult)`
@@ -189,6 +262,11 @@ export const CalcBtn = styled.button`
     font-size: 16px;
     text-align: center;
     color: #FFFFFF;
+    @media(max-width: 575px) {
+        display: block;
+        margin: 0 auto;
+        margin-top: 145px;
+    }
 `
 export const StyledSpan = styled.span`
     margin-left: 16px;
@@ -202,8 +280,16 @@ export const CalcDescr  = styled.div`
     font-weight: 400;
     font-size: 14px;
     color: #737373;
+    @media(max-width: 575px) {
+        position: absolute;
+        bottom: -210px;
+    }
 `
 
 export const SwitchWrapper = styled.div`
-  display: flex;
+    display: flex;
+    @media(max-width: 575px) {
+        position: absolute;
+        bottom: -155px;
+    }
 `

@@ -29,7 +29,7 @@ export const FooterInnerContent: FooterInnerContentType = [
     ]},
     {
         id: 3, 
-        title: 'О нас', 
+        title: 'Пресс-Центр', 
         items: [
             {id: 1, name: 'Новости'},
             {id: 2, name: 'Пресс-релизы'},

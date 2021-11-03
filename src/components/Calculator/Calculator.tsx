@@ -18,7 +18,9 @@ import {
     Line,
     StyledSpan,
     CalcDescr,
-    SwitchWrapper
+    SwitchWrapper,
+    TimeValue,
+    MobileLine
 } from './styles';
 
 
@@ -66,7 +68,7 @@ export const Calculator = () => {
                            min={10000}
                            step={10000}
                            max={10000000}/>
-                <CalcValue>{prettify(sum)}</CalcValue>
+                <CalcValue>{prettify(sum)} ₸</CalcValue>
                 <FlexContainer>
                     <CalcAllowedValue>10 000 ₸</CalcAllowedValue>
                     <CalcAllowedValue>10 000 000 ₸</CalcAllowedValue>
@@ -77,11 +79,12 @@ export const Calculator = () => {
                            min={6}
                            step={1}
                            max={60}/>
-                <CalcValue>{time} месяцев</CalcValue>
+                <TimeValue>{time} месяцев</TimeValue>
                 <FlexContainer>
                     <CalcAllowedValue>6 месяцев</CalcAllowedValue>
                     <CalcAllowedValue>5 лет</CalcAllowedValue>
                 </FlexContainer>
+                <MobileLine/>
                 <SwitchWrapper>
                     <CalcSwitch checked={checked} onChange={handleSwitchChange} />
                     <StyledSpan>Я получаю зарплату по карте ForteBank</StyledSpan>
@@ -91,7 +94,7 @@ export const Calculator = () => {
             <Line />
             <RightCalcBlock>
                 <CalcSubtitle>Ежемесячный платеж</CalcSubtitle>
-                <CalcResult>{prettify(result)}</CalcResult>
+                <CalcResult>{prettify(result)} ₸</CalcResult>
                 <CalcSubtitle>Ставка вознаграждения</CalcSubtitle>
                 <CalcPercent>{percent} %</CalcPercent>
                 <CalcBtn>Оформить кредит</CalcBtn>

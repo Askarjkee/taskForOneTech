@@ -10,13 +10,19 @@ export const ExchangeWrapper = styled.section`
     input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none; 
     }
+    @media(max-width: 575px) {
+        padding-top: 75px;
+    }
 
 `
 
 export const Title = styled.div`
-    font-weight: 500;
+    font-weight: 700;
     font-size: 30px;
     color: #1E2A41;
+    @media(max-width: 575px) {
+        font-size: 24px;
+    }
 `
 
 export const Subtitle = styled.div`
@@ -44,16 +50,22 @@ export const TableItemName = styled.td`
         width: 24px;
         margin-right: 24px;
     }
+    @media(max-width: 575px) {
+        padding: 0;
+    }
 `
 
 export const FlexContainer = styled.div`
     margin-top: 24px;
     display: flex;
     justify-content: space-between;
+    @media(max-width: 575px) {
+        flex-direction: column;
+    }
 `
 
 export const Table = styled.tr`
-
+    
 `
 
 export const TableItemTitle = styled.td`

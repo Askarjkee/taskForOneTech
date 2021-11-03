@@ -6,7 +6,8 @@ import {
     HiddenLocation,
     StyledLink,
     HeaderContent,
-    Location
+    Location,
+    MobileBurger
 } from './styles';
 import { SettingsContentType } from './mock';
 
@@ -22,6 +23,7 @@ export const Settings = ({settings}: PropTypes) => {
 
     return (
         <SettingsWrapper>
+            <MobileBurger/>
             <ForteLogoWrapper href="#">
                 <ForteIconSvg />
             </ForteLogoWrapper>

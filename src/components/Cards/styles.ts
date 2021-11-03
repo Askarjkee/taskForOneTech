@@ -4,6 +4,9 @@ import Card from '@mui/material/Card';
 
 export const CardWrapper = styled.section`
     padding-top: 71px;
+    @media(max-width: 575px) {
+        padding-top: 40px;
+    }
 `
 
 export const Title = styled.div`
@@ -16,6 +19,9 @@ export const MySwiper = styled(Swiper)`
    && {
         margin-top: 24px;
         min-height: 530px;
+        @media(max-width: 575px) {
+            min-height: 475px;
+        }
         .swiper-pagination-bullet {
             width: 8px;
             height: 8px;
@@ -79,4 +85,7 @@ export const MyButton = styled.button`
         font-weight: 500;
         font-size: 16px;
         color: #FFFFFF;
+        @media(max-width: 575px) {
+            margin-top: 24px;
+        }
 `

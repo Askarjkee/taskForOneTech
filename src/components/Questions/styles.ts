@@ -3,11 +3,17 @@ import styled from "styled-components";
 
 export const QuestionsWrapper = styled.section`
     padding-top: 69px;
+    @media(max-width: 575px) {
+        padding: 0;
+    }
 `
 
 export const FlexContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    @media(max-width: 575px) {
+        flex-direction: column;
+    }
 `
 
 export const QuestionsCardWrapper = styled.div`
@@ -17,7 +23,13 @@ export const QuestionsCardWrapper = styled.div`
     background: #F2F2F2;
     border-radius: 4px;
     width: 392px;
-    height: 350px;
+    min-height: 350px;
+    @media(max-width: 575px) {
+        width: 100%;
+        min-height: 20px;
+        padding: 24px 24px 24px 24px;
+        margin-bottom: 24px;
+    }
 `
 
 export const QuestionsIcon = styled.img`
@@ -28,7 +40,7 @@ export const QuestionsIcon = styled.img`
 
 export const QuestionsTitle = styled.div`
     margin-top: 24px;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 18px;
     color: #303030;
 `

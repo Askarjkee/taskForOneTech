@@ -9,17 +9,26 @@ type PropTypes = {
 export const SliderWrapper = styled.section`
     margin-top: 88px;
     height: 400px;
+    @media(max-width: 575px) {
+        margin-top: 0;
+        height: 300px;
+    }
 `
 
 
 export const MySwiper = styled(Swiper)`
-    
+    @media(max-width: 575px) {
+            height: 300px;
+        }
     .swiper-button-prev {
         width: 36px;
         height: 36px;
         background-color: #FFFFFF;
         border-radius: 50%;
         left: 278px;
+        @media(max-width: 575px) {
+            display: none;
+        }
         :after {
             text-align: center;
             font-size: 16px;
@@ -32,6 +41,9 @@ export const MySwiper = styled(Swiper)`
         background-color: #FFFFFF;
         border-radius: 50%;
         right: 278px;
+        @media(max-width: 575px) {
+            display: none;
+        }
         :after {
             text-align: center;
             font-size: 16px;
@@ -41,6 +53,10 @@ export const MySwiper = styled(Swiper)`
     .swiper-pagination {
         display: flex;
         left: 348px;
+        @media(max-width: 575px) {
+            left: 55px;
+            bottom: 0;
+        }
         .swiper-pagination-bullet {
             margin: 0 12px 20px 0;
             width: 44px;
@@ -57,8 +73,12 @@ export const MySwiper = styled(Swiper)`
 `
 
 export const FirstSlide = styled.div<PropTypes>`
-    background: url(${ props => props.imgUrl ? props.imgUrl : backgroundDefault}); 
+    background: url(${ props => props.imgUrl ? props.imgUrl : backgroundDefault}) center; 
     height: 400px;
+    @media(max-width: 575px) {
+        height: 300px;
+    }
+    
 `
 
 export const Title = styled.h1`
@@ -70,6 +90,9 @@ export const Title = styled.h1`
         color: inherit;
         text-decoration: underline;
     }
+    @media(max-width: 575px) {
+            display: none;
+    }
 `
 
 export const Subtitle = styled.h2`
@@ -77,6 +100,10 @@ export const Subtitle = styled.h2`
     font-weight: 500;
     font-size: 48px;
     color: #FFFFFF;
+    @media(max-width: 575px) {
+        font-size: 21px;
+        margin-top: 32px;
+    }
 `
 
 export const Descr = styled.h3`
@@ -84,6 +111,10 @@ export const Descr = styled.h3`
     font-weight: 400;
     font-size: 18px;
     color: #FFFFFF;
+    @media(max-width: 575px) {
+        font-size: 16px;
+        margin-top: 30px;
+    }
 `
 
 export const SliderBtn = styled.button`
@@ -98,12 +129,21 @@ export const SliderBtn = styled.button`
     font-size: 16px;
     text-align: center;
     color: #9D2550;
+    @media(max-width: 575px) {
+        background-color: #9D2550;
+        color: #FFFFFF;
+        width: 156px;
+        height: 44px;
+    }
 `
 
 export const SlideWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     height: 400px;
+    @media(max-width: 575px) {
+        height: 300px;
+    }
 `
 
 export const Information = styled.div`
@@ -111,6 +151,10 @@ export const Information = styled.div`
     flex-direction: column;
 `
 
-export const Picture = styled.div`
-
+export const Picture = styled.img`
+    @media(max-width: 575px) {
+        width: 158px;
+        height: 122px;
+        margin-top: 80px;
+    }
 `

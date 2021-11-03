@@ -29,9 +29,9 @@ export const SliderItem = ({ imgUrl, subtitle, description, btnInfo }: PropTypes
                                 {btnInfo}
                             </SliderBtn>
                         </Information>
-                        <Picture>
-                            <img src={sliderImg} alt="slider" />
-                        </Picture>
+                        
+                        <Picture src={sliderImg} alt="slider" />
+                        
                     </SlideWrapper>
                 </Container>
             </FirstSlide>

@@ -17,6 +17,10 @@ export const SettingsWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-right: 86px;
+    @media(max-width: 575px) {
+        margin-right: 114px;
+    }
+
 `
 
 export const StyledLink = styled(Link)`
@@ -30,6 +34,11 @@ export const ForteLogoWrapper = styled(StyledLink)`
         width: 26px;
         height: 26px;
         margin-right: 34px;
+    }
+    @media(max-width: 575px) {
+        svg {
+            width: 24px;
+        }
     }
 `
 
@@ -51,6 +60,9 @@ export const Language = styled.div`
             transform: rotate(180deg);
             stroke: ${colors.hoverColor};
         }
+    }
+    @media(max-width: 575px) {
+        display: none;
     }
 `
 
@@ -95,6 +107,9 @@ export const Location = styled.div`
             }
         }
     }
+    @media(max-width: 575px) {
+        display: none;
+    }
 `
 
 export const HiddenLocation = styled(HiddenLanguage)`
@@ -107,6 +122,9 @@ export const NavbarWrapper = styled.nav`
     display: flex;
     align-items: center;
     margin-right: 174px;
+    @media(max-width: 575px) {
+        display: none;
+    }
 `
 
 export const NavItem = styled(StyledLink)`
@@ -146,10 +164,18 @@ export const Contacts = styled(StyledLink)`
             fill: ${colors.hoverColor};
         }
     }
+    @media(max-width: 575px) {
+        display: none;
+    }
+    
 `
 
 export const Login = styled(Contacts)`
     margin: 0;
+    @media(max-width: 575px) {
+        display: flex;
+        justify-content: center;
+    }
 `
 
 export const HeaderContent = styled.span` 
@@ -210,6 +236,34 @@ export const SubheaderContent = styled(HeaderContent)`
     font-size: 14px;
     text-align: center;
     color: ${colors.mainColor};
+`
+
+export const MobileBurger = styled.span`
+    width: 20px;
+    height: 2px;
+    background-color: #9D2550;
+    margin-right: 24px;
+    display: none;
+    position: relative;
+    :before {
+        content: '';
+        position: absolute;
+        top: 6px;
+        width: inherit;
+        height: inherit;
+        background-color: inherit;
+    }
+    :after {
+        content: '';
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        background-color: inherit;
+        bottom: 6px;
+    }
+    @media(max-width: 575px) {
+        display: block;
+    }
 `
 
 
