@@ -5,11 +5,11 @@ import {
     TikTokSvg, 
     EyeSvg,
     FooterEndWrapper ,
-    FlexColumn,
     Copyright,
     Feedback,
     Icons,
-    Btn
+    Btn,
+    FooterEndCopyright
 } from './styles';
 
 import { FooterEndContent } from './mock';
@@ -17,10 +17,10 @@ import { FooterEndContent } from './mock';
 export const FooterEnd = () => {
     return (
         <FooterEndWrapper>
-            <FlexColumn>
+            <FooterEndCopyright>
                 <Feedback>{FooterEndContent.feedback}</Feedback>
                 <Copyright>{FooterEndContent.copyright}</Copyright>
-            </FlexColumn>
+            </FooterEndCopyright>
             <Icons>
                 <a href="1"><InstagramSvg /></a>
                 <a href="1"><FacebookSvg /></a>

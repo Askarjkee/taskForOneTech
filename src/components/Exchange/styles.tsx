@@ -51,7 +51,11 @@ export const TableItemName = styled.td`
         margin-right: 24px;
     }
     @media(max-width: 575px) {
-        padding: 0;
+        padding: 0 20px 0 10px;
+        
+        svg {
+            margin-right: 10px;
+        }
     }
 `
 
@@ -76,6 +80,9 @@ export const TableItemTitle = styled.td`
 
 export const TableItemBuy = styled.td`
     padding-right: 63px;
+    @media(max-width: 575px) {
+        padding-right: 27px;
+    }
 `
 
 export const TableItemSell = styled(TableItemBuy)`
@@ -85,10 +92,17 @@ export const TableItemSell = styled(TableItemBuy)`
 export const ExchangeCalc = styled.div`
     background-color: #F5F5F5;
     padding: 24px 64px 32px 64px;
+    border-radius: 4px;
+    @media(max-width: 575px) {
+        padding: 24px 16px 28px 47px;
+    }
 `
 
 export const ExchangeCalcTitle = styled(Title)`
     font-size: 24px;
+    @media(max-width: 575px) {
+        font-size: 18px;
+    }
 `
 
 export const ExchangeCalcItems = styled.div`
@@ -103,7 +117,7 @@ export const ExchangeCalcItems = styled.div`
         outline: none;
         border: none;
         background-color: #F5F5F5;
-        font-weight: normal;
+        font-weight: 400;
         font-size: 24px;
         color: #303030;
     }
@@ -116,10 +130,25 @@ export const ExchangeCalcItems = styled.div`
     button:nth-child(6) {
         margin-right: 0;
     }
+    @media(max-width: 575px) {
+        display: block;
+        border-bottom: none;
+        input {
+            border-bottom: 1px solid #737373;
+            width: 100%;
+            font-size: 18px;
+        }
+    }
 `
 
 
 export const Btn = styled.button<PropTypes>`
+    @media(max-width: 575px) {
+        margin-top: 10px;
+        img {
+            width: 24px;
+        }
+    }
     img {
         border-bottom: ${props => props.active ? '3px solid #9D2550' : 'none'}
     }
@@ -136,6 +165,16 @@ export const BtnSubmit = styled(Btn)`
     img {
         :hover {
             transform: rotate(90deg);
+        }
+    }
+    @media(max-width: 575px) {
+        margin-top: 0;
+        width: 48px;
+        height: 48px;
+        top: 0;
+        left: -57px;
+        img {
+            width: 30px;
         }
     }
 `

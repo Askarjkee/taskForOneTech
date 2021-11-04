@@ -1,19 +1,33 @@
+import { useState, useEffect } from 'react';
 import {
     FooterInnerWrapper,
     FlexColumn,
     Title,
-    Link
+    Link,
+    MobileArrow
 } from './styles';
-import { FooterInnerContent } from './mock';
+import arrow from '../../assets/img/footer/shape.svg';
+import { FooterInnerContent, mobileContent } from './mock';
+
 
 export const FooterInner = () => {
+    const [content, setContent] = useState(FooterInnerContent);
+    const width = window.screen.width;
+
+    useEffect(() => {
+        if (width < 575) {
+            setContent(mobileContent)
+        }
+    }, [width])
+
     return (
         <FooterInnerWrapper>
             {
-                FooterInnerContent.map(item => {
+                content.map(item => {
                     return (
                         <FlexColumn key={item.id}>
                             <Title>{item.title}</Title>
+                            <MobileArrow src={arrow} alt="arrow"/>
                             {
                                 item.items.map(i => <Link key={i.id}>{i.name}</Link>)
                             }

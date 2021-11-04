@@ -4,16 +4,46 @@ export const FooterWrapper = styled.footer`
     margin-top: 64px;
     padding: 32px 0 32px 0;
     background-color: #F8F8F8;
+    @media(max-width: 575px) {
+        margin-top: 40px;
+    }
+`
+
+export const MobileArrow = styled.img`
+    display: none;
+    @media(max-width: 575px) {
+        display: block;
+        width: 12px;
+        height: 6px;
+    }
 `
 
 export const FooterInnerWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    @media(max-width: 575px) {
+        flex-direction: column;
+    }
 `
 
 export const FlexColumn = styled.div`
     display: flex;
     flex-direction: column;
+    @media(max-width: 575px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+    }
+`
+
+export const FooterEndCopyright = styled(FlexColumn)`
+    @media(max-width: 575px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+    }
 `
 
 export const Title = styled.div`
@@ -23,6 +53,9 @@ export const Title = styled.div`
     cursor: pointer;
     :hover {
         color: #9D2550;
+    }
+    @media(max-width: 575px) {
+        margin-bottom: 0;
     }
 `
 
@@ -43,17 +76,26 @@ export const Link = styled.a`
             color: #0E2B91;
         }
     }
+    @media(max-width: 575px) {
+        display: none;
+    }
 `
 
 export const Line = styled.div`
     width: 100%;
     height: 1px;
     background-color: grey;
+    @media(max-width: 575px) {
+        display: none;
+    }
 `
 
 export const FooterEndWrapper = styled.div`
     display: flex;
     margin-top: 24px;
+    @media(max-width: 575px) {
+        flex-direction: column;
+    }
 `
 
 export const Copyright = styled.a`
@@ -82,6 +124,13 @@ export const Icons = styled.div`
             stroke: #9D2550;
         }
     }
+    @media(max-width: 575px) {
+        margin-top: 28px;
+        margin-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 `
 
 export const Btn = styled.button`
@@ -100,7 +149,13 @@ export const Btn = styled.button`
     color: #FFFFFF;
     svg {
         margin-left: 15px;
-    } 
+    }
+    @media(max-width: 575px) {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 44px;
+        padding-left: 20px;
+    }
 `
 
 

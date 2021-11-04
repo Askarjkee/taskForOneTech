@@ -98,5 +98,8 @@ export const DarkButton = styled(Button)`
     color: #FFFFFF;
     @media(max-width: 575px) {
         position: static;
+        display: block;
+        margin: 0 auto;
+        margin-top: 24px;
     }
 `
