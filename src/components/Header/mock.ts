@@ -5,6 +5,9 @@ import familyIcon from '../../assets/img/header/family.svg';
 import insuranceIcon from '../../assets/img/header/insurance.svg';
 import premierIcon from '../../assets/img/header/premier.svg';
 import transfersIcon from '../../assets/img/header/transfers.svg';
+import creditsIcon from '../../assets/img/header/credit.svg';
+
+
 
 export type CabinetContentType = {
     number: string,
@@ -35,13 +38,14 @@ export const menuContent: MenuContentType = [
         name: 'Банк',
         link: '#',
         subheader: [
-            { id: 1, name: 'Карты', link: '#', logo: cardsIcon },
-            { id: 2, name: 'Депозиты', link: '#', logo: depositsIcon },
-            { id: 3, name: 'Переводы', link: '#', logo: transfersIcon },
-            { id: 4, name: 'Insurance', link: '#', logo: insuranceIcon },
-            { id: 5, name: 'Premier', link: '#', logo: premierIcon },
-            { id: 6, name: 'ForteFamily', link: '#', logo: familyIcon },
-            { id: 7, name: 'Контакты', link: '#', logo: contactsIcon }
+            { id: 1, name: 'Кредиты', link: '/credit', logo: creditsIcon },
+            { id: 2, name: 'Карты', link: '#', logo: cardsIcon },
+            { id: 3, name: 'Депозиты', link: '#', logo: depositsIcon },
+            { id: 4, name: 'Переводы', link: '#', logo: transfersIcon },
+            { id: 5, name: 'Insurance', link: '#', logo: insuranceIcon },
+            { id: 6, name: 'Premier', link: '#', logo: premierIcon },
+            { id: 7, name: 'ForteFamily', link: '#', logo: familyIcon },
+            { id: 8, name: 'Контакты', link: '#', logo: contactsIcon }
         ]
     },
 

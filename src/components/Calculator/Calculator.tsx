@@ -79,7 +79,7 @@ export const Calculator = () => {
                            min={6}
                            step={1}
                            max={60}/>
-                <TimeValue>{time} месяцев</TimeValue>
+                <TimeValue>{time} месяцев </TimeValue>
                 <FlexContainer>
                     <CalcAllowedValue>6 месяцев</CalcAllowedValue>
                     <CalcAllowedValue>5 лет</CalcAllowedValue>

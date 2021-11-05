@@ -7,7 +7,7 @@ import {
 } from './styles';
 
 type PropTypes = {
-    content: Array<{id: number, name: string, link: string, logo: string}>
+    content: Array<{id: number, name: string, link: string, logo: string }>
 }
 
 
