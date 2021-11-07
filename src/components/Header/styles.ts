@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { colors } from '../../styles/colors';
+
 
 export const HeaderWrapper = styled.header`
     height: 50px;
@@ -189,13 +191,11 @@ export const HeaderContent = styled.span`
     }
 `
 
-export const SubheaderLink = styled(StyledLink)`
-    && {
-        text-decoration: none;
-        :hover {
-            span {
-                color: ${colors.hoverColor};
-            }
+export const SubheaderLink = styled(NavLink)`
+    text-decoration: none;
+    :hover {
+        span {
+            color: ${colors.hoverColor};
         }
     }
 `

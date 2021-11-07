@@ -6,6 +6,7 @@ import {
     SubheaderContent
 } from './styles';
 
+
 type PropTypes = {
     content: Array<{id: number, name: string, link: string, logo: string }>
 }
@@ -18,7 +19,7 @@ export const HiddenSubheader = ({ content }: PropTypes) => {
                 {
                     content.map(item => {
                         return (
-                            <SubheaderLink key={item.id} href={item.link}>
+                            <SubheaderLink key={item.id} to={item.link}>
                                 <SubheaderItem >
                                     <img src={item.logo} alt="icon" />
                                     <SubheaderContent>
