@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 
 export const FooterWrapper = styled.footer`
     margin-top: 64px;
@@ -30,10 +33,7 @@ export const FlexColumn = styled.div`
     display: flex;
     flex-direction: column;
     @media(max-width: 575px) {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
+        display: none;
     }
 `
 
@@ -53,9 +53,6 @@ export const Title = styled.div`
     cursor: pointer;
     :hover {
         color: #9D2550;
-    }
-    @media(max-width: 575px) {
-        margin-bottom: 0;
     }
 `
 
@@ -155,6 +152,43 @@ export const Btn = styled.button`
         width: 100%;
         margin-top: 44px;
         padding-left: 20px;
+    }
+`
+
+export const MuiAccordion = styled(Accordion)`
+    && {
+        display: none;
+        width: 100%;
+        background-color: #F8F8F8;
+        box-shadow: none;
+        font-weight: 700;
+        font-size: 14px;
+        color: #303030;
+        padding: 0;
+        .MuiAccordionSummary-gutters {
+            padding: 0;
+            min-height: 0;
+        }
+        ::before {
+            display: none;
+        }
+        @media(max-width: 575px) {
+            display: block;
+        }
+    }
+`
+
+export const MuiAccordionSummary = styled(AccordionSummary)`
+    padding: 0;
+`
+
+export const MuiAccordionDetails = styled(AccordionDetails)`
+    && {
+        padding: 0;
+        div {
+            font-weight: 500;
+            margin-top: 10px;
+        }
     }
 `
 

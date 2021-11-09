@@ -12,7 +12,7 @@ SwiperCore.use([Pagination]);
 
 export const Cards = () => {
     const [cards, setCards] = useState(cardsContent);
-    const width = window.screen.width;
+    const [width] = useState(window.screen.width);
 
     useEffect(() => {
         if (width < 575) {
