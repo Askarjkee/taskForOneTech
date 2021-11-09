@@ -36,7 +36,7 @@ export const Title = styled.div`
 	text-align: center;
 `
 
-export const Calc = styled.div`
+export const Calc = styled.form`
 	margin: 0 auto;
 	margin-top: 25px;
 	padding: 40px 80px;
@@ -192,6 +192,53 @@ export const ErrorMessage = styled.span`
 	color: #d32f2f;
 	right: 0;
 	top: -15px;
+`
+
+export const ModalWrapper = styled.div`
+	margin-top: 24px;
+`
+
+export const ModalContent = styled.div`
+	font-weight: 400;
+	font-size: 14px;
+`
+
+export const ModalButtonLink = styled.button`
+	border: none;
+	color: #0E2B91;
+	text-decoration-line: underline;
+	cursor: pointer;
+	font-weight: 400;
+	font-size: 14px;
+
+`
+
+export const Request = styled.span`
+	margin-top: 24px;
+	font-weight: 400;
+	font-size: 14px;
+	color: #737373;
+`
+
+export const RequestButton = styled.button`
+	margin-top: 24px;
+	border: none;
+	cursor: pointer;
+	width: 206px;
+	height: 44px;
+	background: #9D2550;
+	border-radius: 4px;
+
+	font-weight: 500;
+	font-size: 16px;
+	color: #FFFFFF;
+`
+
+export const RequestModalContent = styled.div`
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 150%;
+	color: #303030;
 `
 
 

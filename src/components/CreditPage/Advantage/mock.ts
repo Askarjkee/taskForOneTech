@@ -11,8 +11,8 @@ export const advantageContent = {
 export const accordionContent = {
 	title: 'Преимущества экспресс-кредита ',
 	list: [
-		{id: 1, title: 'Без залога и на любые цели', content: 'test'},
-		{id: 2, title: 'Доставка денег и документов домой', content: 'test'},
-		{id: 3, title: 'Погашение без походов в отделение', content: 'test'}
+		{id: 1, title: 'Без залога и на любые цели', icon: false, content: 'test'},
+		{id: 2, title: 'Доставка денег и документов домой', icon: false, content: 'test'},
+		{id: 3, title: 'Погашение без походов в отделение', icon: false, content: 'test'}
 	]
 }

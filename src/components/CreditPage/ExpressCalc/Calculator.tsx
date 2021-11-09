@@ -1,4 +1,7 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { RequestContent } from './RequestContent';
+import { prettify } from '../../../commons/prettify';
+import { isValidNumber, isValidValue, isValidIin } from '../../../commons/validation';
 import {
 	Calc,
 	FlexWrapper,
@@ -18,28 +21,49 @@ import {
 	ResultValue,
 	ErrorMessage,
 	FormInput,
-	MuiFormControl
+	MuiFormControl,
+	ModalWrapper,
+	ModalContent,
+	ModalButtonLink,
+	Request,
+	RequestButton
+
 } from './styles';
+
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputLabel from '@mui/material/InputLabel';
-import { prettify } from '../../../commons/prettify';
-import { btns } from './mock';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
+
+import { btns, style, initialState } from './mock';
 
 export const Calculator = () => {
-	const [value, setValue] = useState(100000);
-	const [checked, setChecked] = useState(false);
-	const [percent, setPercent] = useState(17);
-	const [time, setTime] = useState(24);
-	const [result, setResult] = useState(1);
-	const [error, setError] = useState(false);
+	const [value, setValue] = useState(initialState.value);
+	const [checked, setChecked] = useState(initialState.checked);
+	const [percent, setPercent] = useState(initialState.percent);
+	const [time, setTime] = useState(initialState.time);
+	const [result, setResult] = useState(initialState.result);
+	const [valueError, setValueError] = useState(initialState.valueError);
 
-	const [showIin, setShowIin] = useState(false);
-	const [Iin, setIin] = useState(950813300285);
+	const [iin, setIin] = useState(initialState.iin);
+	const [iinError, setIinError] = useState(initialState.iinError);
+	const [showIin, setShowIin] = useState(initialState.showIin);
+
+	const [phone, setPhone] = useState(initialState.phone)
+	const [phoneError, setPhoneError] = useState(initialState.phoneError);
+
+	const [income, setIncome] = useState(initialState.income)
+	const [incomeError, setIncomeError] = useState(initialState.incomeError)
+
+	const [openModalLink, setOpenModalLink] = useState(initialState.openModalLink);
+	const [openModalForm, setOpenModalForm] = useState(initialState.openModalForm);
+
 
 	const handleSliderChange = (event: Event, newValue: number | number[]): void => {
-		setError(false)
+		setValueError(false)
 		setValue(+newValue);
 	};
 
@@ -47,23 +71,40 @@ export const Calculator = () => {
 		setChecked(event.target.checked);
 	};
 
-	const handleValueChange = (event: any): void => {
-		if (isNaN(+event.target.value)) {
-			setError(true)
-		}
-		else if (+event.target.value > 7000000 || +event.target.value < 0) {
-			setError(true)
-			setValue(+event.target.value)
-		} else {
-			setError(false)
+	const handleValueChange = (event: ChangeEvent<HTMLInputElement>): void => {
+		setValueError(isValidValue(event.target.value))
+		if (!isNaN(+event.target.value)) {
 			setValue(+event.target.value)
 		}
 	}
 
-	const handleIinChange = (event: any): void => {
+	const handleIinChange = (event: ChangeEvent<HTMLInputElement>): void => {
 		setIin(event.target.value)
+		setIinError(isValidIin(event.target.value))
 	}
 
+	const handleNumberChange = (event: ChangeEvent<HTMLInputElement>): void => {
+		setPhone(event.target.value)
+		setPhoneError(isValidNumber(event.target.value))
+	}
+
+	const handleIncomeChange = (event: ChangeEvent<HTMLInputElement>): void => {
+		if (isNaN(+event.target.value)) {
+			setIncomeError(true)
+		} else {
+			setIncomeError(false)
+			setIncome(event.target.value)
+		}
+	}
+
+	const onSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
+		event.preventDefault();
+		if (!valueError && !iinError && !phoneError && !incomeError) {
+			setOpenModalForm(true)
+		} else {
+			alert('заполните обязательные поля')
+		}
+	}
 
 	useEffect(() => {
 		if (!checked) {
@@ -80,21 +121,22 @@ export const Calculator = () => {
 	}, [value, time, percent])
 
 	return (
-		<Calc>
+		<Calc onSubmit={onSubmitForm}>
 			<FlexWrapper>
 				<CalcTitle margin={'20px'}>Сумма кредита</CalcTitle>
 				<MuiInput
-					error={error}
+					error={valueError}
 					value={value}
 					endAdornment={<MuiAdornment position="end">₸</MuiAdornment>}
 					type=":tel"
-					onChange={(e) => handleValueChange(e)}
+					onChange={handleValueChange}
 					inputProps={{
 						'aria-label': '₸',
 					}} />
-				{error && <ErrorMessage>Невалидное число</ErrorMessage>}
+				{valueError && <ErrorMessage>Невалидное число</ErrorMessage>}
 			</FlexWrapper>
-			<Slider value={value}
+			<Slider
+				value={value}
 				onChange={handleSliderChange}
 				min={100000}
 				step={100000}
@@ -106,7 +148,7 @@ export const Calculator = () => {
 			<CalcTitle margin="40px">Срок кредита</CalcTitle>
 			<FlexWrapper>
 				{
-					btns.map(item => <Button active={item.value === time}
+					btns.map(item => <Button type="button" active={item.value === time}
 						key={item.id}
 						onClick={() => setTime(item.value)}>
 
@@ -133,35 +175,85 @@ export const Calculator = () => {
 					</SwitchText>
 				</SwitchWrapper>
 			</ResultWrapper>
-			<MuiFormControl margintop="40px" variant="outlined">
-				<InputLabel htmlFor="outlined-adornment-password">ИИН *</InputLabel>
+			<MuiFormControl error={iinError} required margintop="40px" variant="outlined">
+				<InputLabel htmlFor="outlined-adornment-password">ИИН</InputLabel>
 				<FormInput
 					type={showIin ? 'text' : 'password'}
-					value={Iin}
-					onChange={(e) => handleIinChange(e)}
-					label="ИИН *"
+					value={iin}
+					onChange={handleIinChange}
+					label="ИИН"
 					endAdornment={
 						<MuiAdornment position="end">
-							<IconButton onClick={() => setShowIin(!showIin)}>
+							<IconButton type="button" onClick={() => setShowIin(!showIin)}>
 								{showIin ? <VisibilityOff /> : <Visibility />}
 							</IconButton>
 						</MuiAdornment>
-					}/>
+					} />
+				{iinError && <ErrorMessage>Невалидный ИИН</ErrorMessage>}
 			</MuiFormControl>
 			<FlexWrapper>
-				<MuiFormControl variant="outlined" margintop="24px">	
-					<InputLabel >Номер телефона *</InputLabel>
-					<FormInput 
-					label="Номер телефона *" 
-					width="288px" 
-					height="56px"
-					type=":tel" />
+				<MuiFormControl error={phoneError} required variant="outlined" margintop="24px">
+					<InputLabel >Номер телефона</InputLabel>
+					<FormInput
+						label="Номер телефона"
+						width="288px"
+						height="56px"
+						value={phone}
+						onChange={handleNumberChange}
+						type=":tel" />
+					{phoneError && <ErrorMessage>неверный формат</ErrorMessage>}
 				</MuiFormControl>
-				<MuiFormControl variant="outlined" margintop="24px">
-					<InputLabel>Основной ежемесяч. доход, ₸ *</InputLabel>	
-					<FormInput label="Основной ежемесяч. доход, ₸ *" width="288px" height="56px" />
+				<MuiFormControl error={incomeError} required variant="outlined" margintop="24px">
+					<InputLabel>Основной ежемесяч. доход, ₸ </InputLabel>
+					<FormInput
+						label="Основной ежемесяч. доход, ₸ "
+						width="288px"
+						height="56px"
+						value={income}
+						onChange={handleIncomeChange}
+					/>
+					{incomeError && <ErrorMessage>только числа</ErrorMessage>}
 				</MuiFormControl>
 			</FlexWrapper>
+			<ModalWrapper>
+				<ModalContent>
+					<> Продолжая я подтверждаю, что ознакомился с </>
+					<>
+						<ModalButtonLink 
+							type="button" 
+							onClick={() => setOpenModalLink(true)}> 
+
+							условиями соглашения 
+
+						</ModalButtonLink>
+						<Modal
+							open={openModalLink}
+							onClose={() => setOpenModalLink(false)}>
+							<Box sx={style}>
+								условия СОГЛАШЕНИЯ
+							</Box>
+						</Modal>
+					</> и даю согласие на обработку своих персональных данных
+				</ModalContent>
+			</ModalWrapper>
+			<Request>
+				Для точного расчета необходимо оставить заявку
+			</Request>
+			<RequestButton type="submit">
+				Оформить кредит
+				<Dialog
+					open={openModalForm}
+					onClose={() => setOpenModalForm(false)}
+					
+				>
+				<RequestContent 
+					value={value} 
+					iin={iin} 
+					phone={phone} 
+					income={income} 
+					setOpenModalForm={setOpenModalForm}/>
+				</Dialog>
+			</RequestButton>
 		</Calc>
 	)
 }

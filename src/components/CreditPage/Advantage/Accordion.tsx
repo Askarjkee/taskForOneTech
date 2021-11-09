@@ -1,8 +1,20 @@
-import { AccordionTittle, MuiAccordion, MuiAccordionSummary, MuiAccordionDetails } from './styles';
-import { accordionContent } from './mock';
+import { AccordionTittle, MuiAccordion, MuiAccordionSummary, MuiAccordionDetails, PlusSvgIcon } from './styles';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export const Accordion = () => {
+type PropTypes = {
+	accordionContent: {
+		title: string;
+		list: {
+			id: number;
+			title: string;
+			icon: boolean;
+			content: string;
+		}[];
+	}
+}
+
+export const Accordion = ({accordionContent}: PropTypes) => {
 	return (
 		<>
 			<AccordionTittle>
@@ -13,7 +25,7 @@ export const Accordion = () => {
 					return (
 						<MuiAccordion key={item.id}>
 							<MuiAccordionSummary
-								expandIcon={<ExpandMoreIcon />}
+								expandIcon={item.icon ? <PlusSvgIcon/> : <ExpandMoreIcon />}
 								aria-controls={`panel${item.id}a-content`}
 								id={`panel${item.id}a-header`}>
 								{item.title}
