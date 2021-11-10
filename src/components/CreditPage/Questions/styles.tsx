@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const QuestionWrapper = styled.section`
 	padding-top: 64px;
+	@media(max-width: 575px) {
+		padding: 0;
+    }
 `
 
 export const Info = styled.div`
@@ -9,6 +12,9 @@ export const Info = styled.div`
 	font-weight: 400;
 	font-size: 12px;
 	color: #999999;
+	@media(max-width: 575px) {
+		line-height: 15px;
+    }
 `
 
 export const Link = styled.a`

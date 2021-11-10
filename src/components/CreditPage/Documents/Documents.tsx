@@ -18,7 +18,7 @@ export const Documents = () => {
 					<Subtitle>{content.descr}</Subtitle>
 				</SubtitleBlock>
 				<Questions>
-					Задать вопросы можете по номеру <Link href="#">7575</Link> или письмом на электронный адрес <Link href="#">callcenter@forte.bank</Link>
+					Задать вопросы можете по номеру <Link href="tel:7575">7575</Link> или письмом на электронный адрес <Link href="mailto:callcenter@forte.bank">callcenter@forte.bank</Link>
 				</Questions>
 			</Container>
 		</DocumentsWrapper>

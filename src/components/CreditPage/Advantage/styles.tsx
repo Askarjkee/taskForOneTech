@@ -5,6 +5,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 
 export const AdvantageWrapper = styled.section`
 	padding-top: 64px;
+	@media(max-width: 575px) {
+        padding-top: 40px;
+    }
 `
 
 export const Title = styled.div`
@@ -12,12 +15,17 @@ export const Title = styled.div`
 	font-size: 24px;
 	color: #1E2A41;
 	text-align: center;
+	@media(max-width: 575px) {
+        text-align: left;
+    }
 `
 
 export const AccordionTittle = styled(Title)`
 	text-align: left;
 	margin: 64px 0 32px 0;
-
+	@media(max-width: 575px) {
+        margin-top: 30px;
+    }
 `
 export const DescrItem = styled.span`
 	display: flex;
@@ -26,6 +34,10 @@ export const DescrItem = styled.span`
 	font-weight: 400;
 	font-size: 16px;
 	color: #303030;
+	@media(max-width: 575px) {
+		margin-right: 0;
+        margin-top: 16px;
+    }
 `
 
 export const DescrBlock = styled.div`
@@ -35,6 +47,10 @@ export const DescrBlock = styled.div`
 	${DescrItem}:nth-child(3) {
 		margin-right: 0;
 	}
+	@media(max-width: 575px) {
+		margin-top: 16px;
+        flex-direction: column;
+    }
 `
 
 export const DescrImg = styled.img`

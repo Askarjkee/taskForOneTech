@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const DocumentsWrapper = styled.section`
 	padding-top: 64px;
+	@media(max-width: 575px) {
+        padding-top: 30px;
+    }
 `
 
 export const Title = styled.div`
@@ -9,6 +12,9 @@ export const Title = styled.div`
 	font-weight: 500;
 	font-size: 24px;
 	color: #1E2A41;
+	@media(max-width: 575px) {
+        margin-bottom: 0;
+    }
 `
 
 export const SubtitleBlock = styled.div`
@@ -35,6 +41,11 @@ export const Questions = styled.div`
 	font-weight: 400;
 	font-size: 12px;
 	color: #737373;
+	@media(max-width: 575px) {
+        width: 100%;
+		font-size: 12px;
+		line-height: 15px;
+    }
 `
 
 export const Link = styled.a`

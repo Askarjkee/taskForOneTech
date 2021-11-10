@@ -31,7 +31,7 @@ export const Accordion = ({accordionContent}: PropTypes) => {
 								{item.title}
 							</MuiAccordionSummary>
 							<MuiAccordionDetails>
-								{`${item.content}${item.id}`}
+								{item.content}
 							</MuiAccordionDetails>
 						</MuiAccordion>
 					)

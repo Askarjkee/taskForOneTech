@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TabsContent } from './TabsContent';
 import { Container } from '../../../styles/container';
 import { TabsWrapper, MuiTabs, MuiTab } from './styles';
-import { TabsData, HiddenTabsData } from './mock';
+import { tabsData, hiddenTabsData, mobileTabsData, mobileHiddenTabsData } from './mock';
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -40,6 +40,16 @@ const a11yProps = (index: number) => {
 
 export const Tabs = () => {
 	const [value, setValue] = useState(0);
+	const [tabs, setTabs] = useState(tabsData);
+	const [hiddenTabs, setHiddenTabs] = useState(hiddenTabsData);
+	const [width] = useState(window.screen.width);
+
+    useEffect(() => {
+        if (width < 575) {
+            setTabs(mobileTabsData);
+			setHiddenTabs(mobileHiddenTabsData);
+        }
+    }, [width])
 
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -51,7 +61,7 @@ export const Tabs = () => {
 			<Container>
 				<MuiTabs value={value} onChange={handleChange} aria-label="tabs">
 					{
-						TabsData.map(tab => <MuiTab
+						tabs.map(tab => <MuiTab
 							key={tab.id}
 							label={tab.title}
 							$active={value === tab.id}
@@ -59,7 +69,7 @@ export const Tabs = () => {
 					}
 				</MuiTabs>
 				{
-					HiddenTabsData.map(tab => {
+					hiddenTabs.map(tab => {
 						return (
 							<TabPanel key={tab.id} value={value} index={tab.id}>
 								<TabsContent title={tab.title} content={tab.content} />

@@ -10,7 +10,7 @@ export const Questions = () => {
 			<Container>
 				<Accordion accordionContent={accordionContent} />
 				<Info>
-				Если не нашли ответа на свой вопрос, позвоните на <Link href="#">7575</Link> или напишите на электронный адрес <Link>callcenter@forte.bank</Link>
+				Если не нашли ответа на свой вопрос, позвоните на <Link href="tel:7575">7575</Link> или напишите на электронный адрес <Link href="mailto:callcenter@forte.bank">callcenter@forte.bank</Link>
 				</Info>
 			</Container>
 		</QuestionWrapper>

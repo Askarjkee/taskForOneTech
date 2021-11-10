@@ -1,14 +1,21 @@
 import styled from 'styled-components';
+import { MySwiper } from '../../MainPage/Cards/styles';
 
 
 export const RequirementsWrapper = styled.section`
 	padding-top: 64px;
+	@media(max-width: 575px) {
+		padding-top: 30px;
+    }
 `
 
 export const Title = styled.div`
 	font-weight: 500;
 	font-size: 30px;
 	color: #1E2A41;
+	@media(max-width: 575px) {
+		font-size: 24px;
+    }
 `
 
 export const CardWrapper = styled.div`
@@ -36,5 +43,13 @@ export const CardSubtitle = styled.div`
 	font-weight: 400;
 	font-size: 16px;
 	color: #737373;
+`
+
+export const Swiper = styled(MySwiper)`
+	&& {
+		@media(max-width: 575px) {
+			min-height: 200px;
+    	}
+	}
 `
 

@@ -26,19 +26,24 @@ import {
 	ModalContent,
 	ModalButtonLink,
 	Request,
-	RequestButton
-
+	RequestButton,
+	BtnWrapper,
+	DescrWrapper,
+	MuiInputLabel,
+	MobileBtnPlus,
+	MobileBtnMinus,
+	MobileInfoTitle,
+	MobileInfoSubtitle,
+	ModalWindow,
+	ErrorValueMessage
 } from './styles';
-
-import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import InputLabel from '@mui/material/InputLabel';
+import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 
-import { btns, style, initialState } from './mock';
+import { btns, initialState } from './mock';
 
 export const Calculator = () => {
 	const [value, setValue] = useState(initialState.value);
@@ -78,14 +83,30 @@ export const Calculator = () => {
 		}
 	}
 
+	const onMobileValueChangePlus = (): void => {
+		if (value < 7000000 && value >= 100000) {
+			setValue(value + 100000)
+		}
+	}
+
+	const onMobileValueChangeMinus = (): void => {
+		if (value <= 7000000 && value > 100000) {
+			setValue(value - 100000)
+		}
+	}
+
 	const handleIinChange = (event: ChangeEvent<HTMLInputElement>): void => {
-		setIin(event.target.value)
 		setIinError(isValidIin(event.target.value))
+		if (!isNaN(+event.target.value)) {
+			setIin(event.target.value)
+		}
 	}
 
 	const handleNumberChange = (event: ChangeEvent<HTMLInputElement>): void => {
-		setPhone(event.target.value)
 		setPhoneError(isValidNumber(event.target.value))
+		if (!isNaN(+event.target.value)) {
+			setPhone(event.target.value)
+		}
 	}
 
 	const handleIncomeChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -124,16 +145,19 @@ export const Calculator = () => {
 		<Calc onSubmit={onSubmitForm}>
 			<FlexWrapper>
 				<CalcTitle margin={'20px'}>Сумма кредита</CalcTitle>
+				<MobileBtnPlus onClick={onMobileValueChangePlus} type="button">+</MobileBtnPlus>
+				<MobileBtnMinus onClick={onMobileValueChangeMinus} type="button">-</MobileBtnMinus>
 				<MuiInput
 					error={valueError}
 					value={value}
 					endAdornment={<MuiAdornment position="end">₸</MuiAdornment>}
-					type=":tel"
+					type="tel"
+					autoComplete="off"
 					onChange={handleValueChange}
 					inputProps={{
 						'aria-label': '₸',
 					}} />
-				{valueError && <ErrorMessage>Невалидное число</ErrorMessage>}
+				{valueError && <ErrorValueMessage>Максимальная сумма 7 000 000 Т</ErrorValueMessage>}
 			</FlexWrapper>
 			<Slider
 				value={value}
@@ -141,12 +165,12 @@ export const Calculator = () => {
 				min={100000}
 				step={100000}
 				max={7000000} />
-			<FlexWrapper>
-				<Description>100 000 ₸</Description>
-				<Description>7 000 000 ₸</Description>
-			</FlexWrapper>
+			<DescrWrapper>
+				<Description $error={valueError}>100 000 ₸ - </Description>
+				<Description $error={valueError}>7 000 000 ₸</Description>
+			</DescrWrapper>
 			<CalcTitle margin="40px">Срок кредита</CalcTitle>
-			<FlexWrapper>
+			<BtnWrapper>
 				{
 					btns.map(item => <Button type="button" active={item.value === time}
 						key={item.id}
@@ -156,8 +180,8 @@ export const Calculator = () => {
 
 					</Button>)
 				}
-			</FlexWrapper>
-			<Description>Срок в месяцах</Description>
+			</BtnWrapper>
+			<Description $error={false}>Срок в месяцах</Description>
 			<Line />
 			<ResultWrapper>
 				<ResultColumn>
@@ -175,17 +199,20 @@ export const Calculator = () => {
 					</SwitchText>
 				</SwitchWrapper>
 			</ResultWrapper>
+			<MobileInfoTitle>Предварительный расчёт не является офертой</MobileInfoTitle>
+			<MobileInfoSubtitle>Для уточнения подайте заявку</MobileInfoSubtitle>
 			<MuiFormControl error={iinError} required margintop="40px" variant="outlined">
-				<InputLabel htmlFor="outlined-adornment-password">ИИН</InputLabel>
+				<MuiInputLabel htmlFor="outlined-adornment-password">ИИН</MuiInputLabel>
 				<FormInput
 					type={showIin ? 'text' : 'password'}
+					autoComplete="off"
 					value={iin}
 					onChange={handleIinChange}
 					label="ИИН"
 					endAdornment={
 						<MuiAdornment position="end">
 							<IconButton type="button" onClick={() => setShowIin(!showIin)}>
-								{showIin ? <VisibilityOff /> : <Visibility />}
+								{showIin ? <Visibility /> : <VisibilityOff />}
 							</IconButton>
 						</MuiAdornment>
 					} />
@@ -193,19 +220,22 @@ export const Calculator = () => {
 			</MuiFormControl>
 			<FlexWrapper>
 				<MuiFormControl error={phoneError} required variant="outlined" margintop="24px">
-					<InputLabel >Номер телефона</InputLabel>
+					<MuiInputLabel >Номер телефона</MuiInputLabel>
 					<FormInput
 						label="Номер телефона"
 						width="288px"
 						height="56px"
 						value={phone}
 						onChange={handleNumberChange}
-						type=":tel" />
+						type="tel"
+						autoComplete="on" />
 					{phoneError && <ErrorMessage>неверный формат</ErrorMessage>}
 				</MuiFormControl>
 				<MuiFormControl error={incomeError} required variant="outlined" margintop="24px">
-					<InputLabel>Основной ежемесяч. доход, ₸ </InputLabel>
+					<MuiInputLabel>Основной ежемесяч. доход, ₸ </MuiInputLabel>
 					<FormInput
+						type="number"
+						autoComplete="off"
 						label="Основной ежемесяч. доход, ₸ "
 						width="288px"
 						height="56px"
@@ -229,9 +259,9 @@ export const Calculator = () => {
 						<Modal
 							open={openModalLink}
 							onClose={() => setOpenModalLink(false)}>
-							<Box sx={style}>
+							<ModalWindow>
 								условия СОГЛАШЕНИЯ
-							</Box>
+							</ModalWindow>
 						</Modal>
 					</> и даю согласие на обработку своих персональных данных
 				</ModalContent>
@@ -244,7 +274,7 @@ export const Calculator = () => {
 				<Dialog
 					open={openModalForm}
 					onClose={() => setOpenModalForm(false)}
-					
+					fullScreen
 				>
 				<RequestContent 
 					value={value} 
